@@ -6,7 +6,7 @@ pipeline {
 		treeConflictsOutput = 'dependency-tree-conflicts.txt'
 	}
 	parameters {
-		string(name: 'branch', defaultValue: 'master')
+		string(name: 'BRANCH', defaultValue: 'master')
 	}
 	tools {
 		maven '3.0.5'
@@ -16,7 +16,7 @@ pipeline {
 		stage ('Checkout') {
 			steps {
 				git (
-					branch: '${params.branch}', 
+					branch: '${params.BRANCH}', 
 					credentialsId: 'cc912940-bd88-4259-ac0c-681887cb6db6',
 					url: 'https://stash.performgroup.com/scm/javacore/core-project.git'
 				)
