@@ -12,7 +12,7 @@ pipeline {
 			git (
 				branch: '${params.branch}', 
 				credentialsId: 'cc912940-bd88-4259-ac0c-681887cb6db6',
-				url: https://stash.performgroup.com/scm/javacore/core-project.git
+				url: 'https://stash.performgroup.com/scm/javacore/core-project.git'
 			)
 		}
 		stage {'Build'} {
