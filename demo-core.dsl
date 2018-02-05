@@ -8,23 +8,30 @@ pipeline {
 		jdk 'jdk8'
 	}
 	stages {
-		stage {'Checkout'} {
+		stage ('Checkout') {
+		steps {
 			git (
 				branch: '${params.branch}', 
 				credentialsId: 'cc912940-bd88-4259-ac0c-681887cb6db6',
 				url: 'https://stash.performgroup.com/scm/javacore/core-project.git'
 			)
+			}
 		}
-		stage {'Build'} {
+		stage ('Build') {
+		steps {
 			sh 'mvn clean install -DskipTests'
+			}
 		}
-		stage { 'Deploy' } {
+		stage ('Deploy') {
+		steps {
 			archiveArtifacts artifacts: '**/*.jar', fingerprint: true
+			}
 		}
-		stage { 'Report' } {
+		stage ('Report') {
 			updatesOutput = 'dependency-updates.txt'
 			treeOutput = 'dependency-tree.txt'
 			treeConflictsOutput = 'dependency-tree-conflicts.txt'
+			steps {
 			sh """
 				  mvn dependency:tree -Dverbose=true -DoutputFile=tree.txt versions:display-dependency-updates -Dversions.outputFile=updates.txt;
 				  |find . -name 'tree.txt' -exec cat {} \\; > ${treeOutput}
@@ -36,6 +43,7 @@ pipeline {
 				  |	cat \$file >> ${updatesOutput}
 				  |done;""".stripMargin()
 			archiveArtifacts artifacts:'${updatesOutput},${treeOutput},${treeConflictsOutput}', fingerprint: true
+			}
 		}
 	}
 }
