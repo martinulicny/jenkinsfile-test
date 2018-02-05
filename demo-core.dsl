@@ -1,9 +1,9 @@
 pipeline {
 	agent any 
 	
-	updatesOutput = 'dependency-updates.txt'
-	treeOutput = 'dependency-tree.txt'
-	treeConflictsOutput = 'dependency-tree-conflicts.txt'
+	def updatesOutput = 'dependency-updates.txt'
+	def treeOutput = 'dependency-tree.txt'
+	def treeConflictsOutput = 'dependency-tree-conflicts.txt'
 	
 	parameters {
 		string(name: 'branch', defaultValue: 'master')
