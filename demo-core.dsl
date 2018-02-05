@@ -9,9 +9,11 @@ pipeline {
 	}
 	stages {
 		stage {'Checkout'} {
-			git branch: ${params.branch}, 
-			credentialsId: 'cc912940-bd88-4259-ac0c-681887cb6db6',
-			url: https://stash.performgroup.com/scm/javacore/core-project.git		
+			git (
+				branch: '${params.branch}', 
+				credentialsId: 'cc912940-bd88-4259-ac0c-681887cb6db6',
+				url: https://stash.performgroup.com/scm/javacore/core-project.git
+			)
 		}
 		stage {'Build'} {
 			sh 'mvn clean install -DskipTests'
