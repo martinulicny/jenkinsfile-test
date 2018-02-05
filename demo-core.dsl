@@ -9,8 +9,8 @@ pipeline {
 		string(name: 'branch', defaultValue: 'master')
 	}
 	tools {
-		maven 'Maven 3.0.5'
-		jdk 'jdk7'
+		maven '3.0.5'
+		jdk 'jdk8'
 	}
 	stages {
 		stage ('Checkout') {
