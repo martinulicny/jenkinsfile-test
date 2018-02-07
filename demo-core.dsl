@@ -17,7 +17,7 @@ pipeline {
 			steps {
 				git (
 					branch: "${params.GIT_BRANCH}", 
-					credentialsId: 'cc912940-bd88-4259-ac0c-681887cb6db6',
+					credentialsId: '533ac8f9-f6fa-4f93-b104-2bc15e6cbcc3',
 					url: 'https://stash.performgroup.com/scm/javacore/core-project.git'
 				)
 			}
