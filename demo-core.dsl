@@ -45,7 +45,7 @@ pipeline {
 				  |	cat \$file >> ${updatesOutput}
 				  |done;
 				  """.stripMargin()
-				archiveArtifacts artifacts:'${updatesOutput},${treeOutput},${treeConflictsOutput}', fingerprint: true
+				archiveArtifacts artifacts:"${updatesOutput},${treeOutput},${treeConflictsOutput}", fingerprint: true
 			}
 		}
 	}
