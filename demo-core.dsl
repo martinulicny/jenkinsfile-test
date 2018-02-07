@@ -18,7 +18,7 @@ pipeline {
 				git (
 					branch: "${params.GIT_BRANCH}", 
 					credentialsId: '533ac8f9-f6fa-4f93-b104-2bc15e6cbcc3',
-					url: 'https://stash.performgroup.com/scm/javacore/core-project.git'
+					url: 'https://stash.performgroup.com/scm/plat/active-monitoring-api.git'
 				)
 			}
 		}
